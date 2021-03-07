@@ -1,15 +1,13 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-
+using Microsoft.AspNetCore.Http;
 
 namespace MvcMovie.Models
 {
-    public class Movie
+    public class MovieCreateViewModel
     {
-        public int Id { get; set; }
-
-        [StringLength(60, MinimumLength = 3)]
+       [StringLength(60, MinimumLength = 3)]
         [Required]
         public string Title { get; set; }
 
@@ -32,7 +30,21 @@ namespace MvcMovie.Models
         [Required]
         public string Rating { get; set; }
 
-        public string PhotoPath { get; set; }
+        public IFormFile Photo { get; set; }
+
     }
-    
+
+    public enum GenreList
+    {
+        Action,
+        Animation,
+        Comedy,
+        Documentary,
+        Drama,
+        Historical,
+        Horror,
+        Religion,
+        SciFi,
+        Western
+    }
 }
